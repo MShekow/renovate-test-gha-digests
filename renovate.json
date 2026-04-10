@@ -1,6 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
+  "packageRules": [
+    {
+      "description": "Auto-update GitHub Actions, merging the PRs only after 14 days (hopefully enough time for the community to detect bad releases)",
+      "matchDepTypes": ["action"],
+      "automerge": true,
+      "minimumReleaseAge": "14 days"
+    }
   ]
 }
